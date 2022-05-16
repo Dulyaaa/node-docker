@@ -27,7 +27,7 @@ mongoose.connection.once('open', () => {
 });
 
 app.route('/').get((req, res) => {
-    res.send('AF Final Exam');
+    res.send('CTSE Assignment 3 - Payment Service');
 });
 
 app.use('/payment', paymentAPI());
