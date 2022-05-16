@@ -23,9 +23,9 @@ jobs:
       - name: Build order service
         run: |
           cd app/order_service
-          docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/orderservice:${{ github.sha }}
+          docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO_ORDER }}:${{ github.sha }}
       - name: Push order service
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/orderservice:${{ github.sha }}
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO_ORDER }}:${{ github.sha }}
 
   payment_service:
     runs-on: ubuntu-latest
@@ -44,6 +44,6 @@ jobs:
       - name: Build payment service
         run: |
           cd app/payment_service
-          docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/paymentservice:${{ github.sha }}
+          docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO_PAYMENT }}:${{ github.sha }}
       - name: Push order service
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/paymentservice:${{ github.sha }}
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO_PAYMENT }}:${{ github.sha }}
