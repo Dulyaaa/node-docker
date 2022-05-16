@@ -1,7 +1,5 @@
 FROM node:16-alpine
 
-RUN npm install express mongoose cors dotenv body-parser config
-
 WORKDIR /order_service
 
 COPY . .
