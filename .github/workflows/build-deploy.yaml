@@ -6,7 +6,7 @@ on:
     branches: [ main ]
     
 jobs:
-  build:
+  order_service:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,10 +20,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/sliit-2022-test:${{ github.sha }}
+      - name: Build order service
+        run: |
+          cd app/order_service
+          docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/orderservice:${{ github.sha }}
+      - name: Push order service
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/orderservice:${{ github.sha }}
