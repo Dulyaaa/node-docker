@@ -27,7 +27,7 @@ mongoose.connection.once('open', () => {
 });
 
 app.route('/').get((req, res) => {
-    res.send('CTSE Assignment 3');
+    res.send('CTSE Assignment 3 - Order Service');
 });
 
 app.use('/order', orderAPI());
