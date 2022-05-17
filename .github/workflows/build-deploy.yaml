@@ -47,3 +47,17 @@ jobs:
           docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO_PAYMENT }}:${{ github.sha }}
       - name: Push order service
         run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO_PAYMENT }}:${{ github.sha }}
+
+  deploy:
+      needs: [order-service, payment-service]
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: Log In to Azure
+        uses: Azure/aks-set-context@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+          cluster-name: ctse-cluster
+          resource-group: CTSE
+      - name: ⬆️ Deploy to K8s
+        run: kubectl apply -f k8s/
