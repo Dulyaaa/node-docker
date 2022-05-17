@@ -55,8 +55,8 @@ jobs:
       with:
         namespace: default
         manifests: |
-          manifests/deployment.yml
-          manifests/service.yml
+          manifests/deployment-order.yml
+          manifests/service-order.yml
         images: |
           25330.azurecr.io/ctsecluster:${{ github.sha }}
         imagepullsecrets: |
