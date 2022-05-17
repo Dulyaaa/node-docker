@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "ctsecluster-ceff"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "ctsecluster-ceff"
+  template:
+    metadata:
+      labels:
+        app: "ctsecluster-ceff"
+    spec:
+      containers:
+        - name: "ctsecluster-ceff"
+          image: "25330.azurecr.io/ctsecluster"
+          ports:
+          - containerPort: 4001
