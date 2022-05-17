@@ -49,7 +49,7 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPO_PAYMENT }}:${{ github.sha }}
 
   deploy:
-      needs: [order-service, payment-service]
+      needs: [order_service, payment_service]
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v2
