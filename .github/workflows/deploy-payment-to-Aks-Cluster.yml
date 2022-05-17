@@ -1,3 +1,4 @@
+name: Deploy payment service to Aks Cluster
 on: [push]
 jobs:
   build-and-deploy:
