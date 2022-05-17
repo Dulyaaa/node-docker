@@ -58,7 +58,3 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           cluster-name: ctse-cluster
           resource-group: CTSE
-      - name: Deploy order service.yaml
-        run: kubectl apply -f k8s/order_service/deploy.yaml
-      - name: Deploy payment service.yaml
-        run: kubectl apply -f k8s/payment_service/deploy.yaml
