@@ -59,4 +59,5 @@ jobs:
           cluster-name: ctse-cluster
           resource-group: CTSE
       - name: Deploy yaml
-        run: kubectl apply -f manifests/
+        run: kubectl apply -f k8s/order_service/deploy.yaml
+        run: kubectl apply -f k8s/payment_service/deploy.yaml
