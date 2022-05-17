@@ -52,12 +52,11 @@ jobs:
       needs: [order_service, payment_service]
       runs-on: ubuntu-latest
       steps:
-      - uses: actions/checkout@v2
-      - name: Log In to Azure
-        uses: Azure/aks-set-context@v1
+      - uses: actions/checkout@master
+      - uses: azure/login@v1
         with:
-          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
           cluster-name: ctse-cluster
           resource-group: CTSE
-      - name: ⬆️ Deploy to K8s
-        run: kubectl apply -f k8s/
+      - name: Deploy yaml
+        run: kubectl apply -f manifests/
